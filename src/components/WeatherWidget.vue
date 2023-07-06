@@ -82,7 +82,7 @@ export default {
   display: flex;
   justify-content: center;
   height:auto;
-  background-color: rgb(27, 27, 27);
+  
   font-family: 'Arial', sans-serif;
 }
 

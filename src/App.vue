@@ -2,26 +2,44 @@
   <div id="app" class="content">
     <header>
       <nav class="navbar">
-        <div class="logo">
-          <span class="logo-text">AndiApp</span>
-        </div>
-        <input type="checkbox" id="navbar-toggle-checkbox" class="navbar-toggle-checkbox">
+        <input type="checkbox" id="navbar-toggle-checkbox" class="navbar-toggle-checkbox" v-model="isMenuOpen">
         <label for="navbar-toggle-checkbox" class="navbar-toggle-label">
           <span class="navbar-toggle-icon"></span>
         </label>
-        <ul class="nav-list">
-          <li><router-link to="/infocountry" class="nav-button" exact-active-class="active">InfoCountry</router-link></li>
-          <li><router-link to="/" class="nav-button" exact-active-class="active">Weather</router-link></li>
-          <li><router-link to="/location" class="nav-button" exact-active-class="active">Location</router-link></li>
-          <li><router-link to="/stopwatch" class="nav-button" exact-active-class="active">Stopwatch</router-link></li>
-          <li><router-link to="/tictactoe" class="nav-button" exact-active-class="active">Tic Tac Toe</router-link></li>
-          <li><router-link to="/photo" class="nav-button" exact-active-class="active">Photo</router-link></li>
+        <div class="logo">
+          <span class="logo-text">AndiApp</span>
+        </div>
+        
+        <ul class="nav-list" :class="{ 'active': isMenuOpen }">
+          <li><router-link to="/" class="nav-button" exact-active-class="active" @click="closeMenu">Weather</router-link></li>
+          <li><router-link to="/location" class="nav-button" exact-active-class="active" @click="closeMenu">Location</router-link></li>
+          <li><router-link to="/stopwatch" class="nav-button" exact-active-class="active" @click="closeMenu">Stopwatch</router-link></li>
+          <li><router-link to="/tictactoe" class="nav-button" exact-active-class="active" @click="closeMenu">Tic Tac Toe</router-link></li>
+          <li><router-link to="/photo" class="nav-button" exact-active-class="active" @click="closeMenu">Photo</router-link></li>
+          <li><router-link to="/infocountry" class="nav-button" exact-active-class="active" @click="closeMenu">InfoCountry</router-link></li>
         </ul>
       </nav>
     </header>
     <router-view></router-view>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      isMenuOpen: false
+    };
+  },
+  methods: {
+    closeMenu() {
+      this.isMenuOpen = false;
+    }
+  }
+};
+</script>
+
+
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
